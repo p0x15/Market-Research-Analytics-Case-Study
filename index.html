@@ -219,6 +219,36 @@
   .chart-hero>*{position:relative}
   .chart-hero svg{width:100%;height:auto;display:block}
 
+  /* latest-data pop-in cards */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.1vw,15px);margin-top:22px}
+  .fact{position:relative;overflow:hidden;border-radius:14px;padding:14px 15px;
+    background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.8);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 10px 26px rgba(20,24,31,0.08);opacity:0}
+  @supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .fact{background:rgba(255,255,255,0.32);
+      -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6)}
+  }
+  .fact .flabel{display:block;font-size:10.5px;letter-spacing:.03em;color:var(--muted);
+    text-transform:uppercase;font-weight:600;line-height:1.25;min-height:2.4em}
+  .fact .fval{display:block;font-family:var(--serif);font-size:clamp(22px,2.3vw,30px);
+    font-weight:600;line-height:1;margin-top:6px;font-variant-numeric:tabular-nums}
+  .fact .fdelta{display:inline-block;margin-top:9px;font-size:12px;font-weight:700;
+    padding:2px 9px;border-radius:20px}
+  .fact .fdelta.up{background:#2E7D5B22;color:var(--good)}
+  .fact .fdelta.down{background:var(--accent-soft);color:var(--accent)}
+  .fact .fdelta.flat{background:var(--line);color:var(--muted)}
+  .fact .fsrc{display:block;margin-top:9px;font-size:9.5px;color:var(--muted);letter-spacing:.01em}
+  .slide.active .fact{animation:popin .5s cubic-bezier(.2,.85,.25,1) both}
+  .slide.active .fact:nth-child(1){animation-delay:.06s}
+  .slide.active .fact:nth-child(2){animation-delay:.14s}
+  .slide.active .fact:nth-child(3){animation-delay:.22s}
+  .slide.active .fact:nth-child(4){animation-delay:.30s}
+  .slide.active .fact:nth-child(5){animation-delay:.38s}
+  .slide.active .fact:nth-child(6){animation-delay:.46s}
+  .slide.active .fact:nth-child(7){animation-delay:.54s}
+  @keyframes popin{from{opacity:0;transform:translateY(16px) scale(.88)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.fact{opacity:1}}
+
   .hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:20;
     font-size:11.5px;color:var(--muted);letter-spacing:.04em;opacity:.8}
   @media (max-width:760px){.hint{display:none}}
@@ -769,6 +799,69 @@
       <div class="footer">
         <p class="src">Q1 data types · Q2 sufficiency · Q3 gaps · Q4 what to add next</p>
         <p class="src">Evidence: report <b>pp. 47–56</b> + course toolkit</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SLIDE 8b - LATEST DATA POP-IN ===== -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow"><span class="n">Post-report ·</span> Reality check, 2024</p>
+      <h2>We refreshed the evidence <span style="color:var(--accent)">ourselves.</span></h2>
+
+      <div class="facts">
+        <div class="fact">
+          <span class="flabel">Total population</span>
+          <span class="fval">123M</span>
+          <span class="fdelta down">▼ 2.5%</span>
+          <span class="fsrc">Statistics Bureau of Japan</span>
+        </div>
+        <div class="fact">
+          <span class="flabel">Working-age population</span>
+          <span class="fval">68.9M</span>
+          <span class="fdelta down">▼ 8.3%</span>
+          <span class="fsrc">Statistics Bureau of Japan</span>
+        </div>
+        <div class="fact">
+          <span class="flabel">Seniors 65+ (36M+)</span>
+          <span class="fval">29%</span>
+          <span class="fdelta up">▲ 1.7%</span>
+          <span class="fsrc">Cabinet Office Japan</span>
+        </div>
+        <div class="fact">
+          <span class="flabel">Cashless share</span>
+          <span class="fval">58%</span>
+          <span class="fdelta up">▲ 116% rel.</span>
+          <span class="fsrc">METI cashless statistics</span>
+        </div>
+        <div class="fact">
+          <span class="flabel">E-commerce share</span>
+          <span class="fval">13–14%</span>
+          <span class="fdelta up">▲ ~+50%</span>
+          <span class="fsrc">METI E-Commerce Survey</span>
+        </div>
+        <div class="fact">
+          <span class="flabel">Convenience stores (konbini)</span>
+          <span class="fval">56–57k</span>
+          <span class="fdelta flat">+0 to 2%</span>
+          <span class="fsrc">Japan Franchise Assoc.</span>
+        </div>
+        <div class="fact">
+          <span class="flabel">Department stores</span>
+          <span class="fval">~205</span>
+          <span class="fdelta down">▼ 9%</span>
+          <span class="fsrc">Japan Dept. Stores Assoc.</span>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <span class="lbl">Still holds</span>
+        <p>Same direction (<b>shrinking &amp; aging</b>), but the <b>digital shift is even faster</b>. Our strategy stands on current evidence.</p>
+      </div>
+
+      <div class="footer">
+        <p class="src">Latest official statistics (2024), vs the report's 2018–2020 baseline</p>
+        <p class="src">SB Japan · Cabinet Office · METI · JFA · JDSA</p>
       </div>
     </div>
   </section>
